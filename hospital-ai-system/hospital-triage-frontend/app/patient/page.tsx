@@ -16,18 +16,21 @@ export default function PatientPage() {
     setResult(null);
 
     try {
-     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/triage/predict`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          age: Number(age),
-          gender,
-          symptoms: symptoms.split(",").map((s) => s.trim()).filter(Boolean),
-          duration_days: Number(durationDays),
-        }),
-      });
+    const response = await fetch(
+  `${process.env.NEXT_PUBLIC_API_URL}/triage`,
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      age: Number(age),
+      gender,
+      symptoms: symptoms.split(","),
+      duration_days: Number(durationDays),
+    }),
+  }
+);
 
       const data = await response.json();
       setResult(data);
