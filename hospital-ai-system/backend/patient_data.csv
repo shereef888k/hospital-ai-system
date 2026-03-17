@@ -1,0 +1,21 @@
+age,gender,symptoms,duration_days,urgency,department
+45,male,"chest pain, breathing difficulty",1,High,Emergency
+60,male,"chest pain, heart pain",1,High,Cardiology
+30,female,"fever, cough",3,Medium,General Medicine
+25,male,"cold, sore throat",2,Medium,General Medicine
+40,female,"headache, dizziness",2,Medium,Neurology
+35,male,"migraine, headache",1,Medium,Neurology
+28,female,"stomach pain, vomiting",1,Medium,Gastroenterology
+22,male,"diarrhea, nausea",2,Medium,Gastroenterology
+19,female,"itching, rash",4,Low,Dermatology
+33,male,"skin allergy, itching",5,Low,Dermatology
+50,female,"ear pain, sinus pain",3,Low,ENT
+42,male,"hearing loss, ear pain",6,Low,ENT
+55,male,"joint pain, back pain",7,Low,Orthopedics
+38,female,"leg pain, swelling",5,Low,Orthopedics
+27,male,"eye pain, red eye",2,Medium,Ophthalmology
+48,female,"blurred vision, eye pain",1,Medium,Ophthalmology
+65,male,"severe bleeding, unconscious",0,High,Emergency
+70,female,"seizure, unconscious",0,High,Emergency
+29,female,"fever, cold",2,Medium,General Medicine
+31,male,"vomiting, stomach pain",2,Medium,Gastroenterology
