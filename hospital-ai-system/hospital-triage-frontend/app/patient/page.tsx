@@ -16,26 +16,36 @@ export default function PatientPage() {
     setResult(null);
 
     try {
-    const response = await fetch(
-  `${process.env.NEXT_PUBLIC_API_URL}/triage`,
-  {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      age: Number(age),
-      gender,
-      symptoms: symptoms.split(","),
-      duration_days: Number(durationDays),
-    }),
-  }
-);
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-      const data = await response.json();
+      const response = await fetch(`${apiUrl}/triage/predict`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          age: Number(age),
+          gender,
+          symptoms: symptoms.split(",").map((s) => s.trim()).filter(Boolean),
+          duration_days: Number(durationDays),
+        }),
+      });
+
+      const text = await response.text();
+
+      if (!response.ok) {
+        setResult({
+          error: `HTTP ${response.status}: ${text}`,
+        });
+        return;
+      }
+
+      const data = JSON.parse(text);
       setResult(data);
-    } catch (error) {
-      setResult({ error: "Failed to connect to backend" });
+    } catch (error: any) {
+      setResult({
+        error: `REAL ERROR: ${error?.message || "Unknown error"} | API: ${process.env.NEXT_PUBLIC_API_URL}`,
+      });
     } finally {
       setLoading(false);
     }
