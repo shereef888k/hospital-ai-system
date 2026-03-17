@@ -21,12 +21,12 @@ app.add_middleware(
         "http://127.0.0.1:3000",
         "https://hospital-ai-system-gaz9.vercel.app",
         "https://hospital-ai-system-theta.vercel.app",
+        "https://hospital-ai-system-m7eh.vercel.app",
     ],
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 app.include_router(triage_router)
 app.include_router(patients_router)
