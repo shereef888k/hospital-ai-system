@@ -14,15 +14,10 @@ app = FastAPI(title="Hospital AI System")
 def startup():
     Base.metadata.create_all(bind=engine)
 
+# ✅ FIXED CORS (IMPORTANT)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-        "https://hospital-ai-system-gaz9.vercel.app",
-        "https://hospital-ai-system-theta.vercel.app",
-        "https://hospital-ai-system-m7eh.vercel.app",
-    ],
+    allow_origins=["*"],   # 🔥 allow all (fix your issue)
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
